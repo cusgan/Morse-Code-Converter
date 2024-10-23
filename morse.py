@@ -13,6 +13,7 @@ inpt = input('Enter your Morse Code: ')
 inpt = inpt.split(' ') # Split the string by Morse code character (each separated by spaceS)
 
 outpt = ''
+is_valid = True
 # Iterate through each 'letter' in Morse Code
 for letter in inpt:
     state = 'Start'
@@ -34,11 +35,14 @@ for letter in inpt:
 
     # Handling invalid inputs
     if (state == 'Start' or state == 'Dead'):
-        print('Error: Invalid Morse Code!')
+        is_valid = False
         break
 
     # Append the resultant Roman letter to the output
     outpt += state.strip()
 
 # Print the final output
-print(f'Your Morse Code is: {outpt}\n')
+if is_valid:
+    print(f'Your Morse Code is: {outpt}\n')
+else: 
+    print('Error: Invalid Morse Code! Cannot perform conversion.\n')
